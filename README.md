@@ -1,2 +1,4 @@
 # Group-10
-bcjkabdckj
+pip install Flask
+pip install Flask-SQLAlchemy
+pip install Flask-login
