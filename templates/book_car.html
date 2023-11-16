@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Car</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 2rem;
+        }
+        .details-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Align items at the start of the flex container */
+            background: #2a2a2a;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .car-details img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .booking-form {
+            background: #1c1c1c;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .booking-form label, .booking-form input, .booking-form button {
+            display: block;
+            width: 100%;
+            margin-bottom: .5rem;
+        }
+        .booking-form input[type="date"] {
+            font-size: 16px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            margin-bottom: 15px;
+        }
+        .booking-form button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 18px; 
+            padding: 15px 30px; 
+            margin-top: 10px; 
+        }
+        .flash-message.success {
+            color: #fff;
+            background-color: #28a745; /* Green background */
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 1.5rem; /* Larger text */
+            border-radius: 5px;
+            text-align: center;
+        }
+        .error-message {
+            color: #ff6b6b;
+            margin-top: 5px;
+        }
+        .booking-form button:hover {
+            background-color: #0056b3;
+        }
+        .car-details {
+            flex: 0 0 50%;
+            margin-right: 20px; 
+        }
+        .booking-section {
+            flex: 1;
+            background: #1c1c1c;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .date-selection, .cost-calculation {
+            font-weight: bold; 
+            color: #e0e0e0; 
+            flex: 1;
+            margin: 0 10px;
+        }
+        .terms {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px; 
+        }
+        .terms input[type="checkbox"],
+        .terms label {
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .details-section {
+                flex-direction: column; 
+            }
+            .car-details, .booking-section {
+                width: 100%;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+        <div class="details-section">
+            <div class="car-details">
+                <img src="{{ url_for('static', filename='images/' + car.image) }}" alt="{{ car.make }} {{ car.model }}">
+                <h2>{{ car.make }} {{ car.model }} - {{ car.year }}</h2>
+                <p>Seats: {{ car.seats }}</p>
+                <p>Price per day: ${{ car.ppd }}</p>
+                <p>Mileage: {{ car.mileage }} miles</p>
+                <p>Location: {{ car.location }}</p>
+            </div>
+
+            <div class="booking-section">
+                <form class="booking-form" action="{{ url_for('book_car', car_vin=car.vin) }}" method="post">
+                    <div class="date-selection">
+                        <label for="start_date">Start Date:</label>
+                        <input type="date" id="start_date" name="start_date" onchange="calculateTotalCost()" required>
+
+                        <label for="end_date">End Date:</label>
+                        <input type="date" id="end_date" name="end_date" onchange="calculateTotalCost()" required>
+                    </div>
+
+                    <div class="cost-calculation">
+                        <p id="day_count">0 days</p>
+                        <p id="daily_rate">Price per day: ${{ car.ppd }}</p>
+                        <p id="total_cost">Total Cost: $0.00</p>
+                        <p id="tax_amount">Tax: $0.00</p>
+                        <p id="final_total">Total with Tax: $0.00</p>
+                    </div>
+                    <div id="feedback" class="error-message"></div>
+                    <div class="terms">
+                        <label for="terms">I agree to the <a href="/terms-and-conditions" target="_blank">Terms and Conditions</a>.</label>
+                        <input type="checkbox" id="terms" name="terms" required>
+                    </div>
+
+                    <button type="submit" class="book-btn">Book Car</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function calculateTotalCost() {
+            var startDate = new Date(document.getElementById('start_date').value);
+            var endDate = new Date(document.getElementById('end_date').value);
+            var timeDiff = endDate - startDate;
+            var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    
+            if (daysDiff > 0) {
+                var ppd = parseFloat("{{ car.ppd }}");
+                var totalCost = daysDiff * ppd;
+                var taxRate = 0.055; 
+                var taxAmount = totalCost * taxRate;
+                var finalTotal = totalCost + taxAmount;
+    
+                document.getElementById('day_count').textContent = daysDiff + ' days';
+                document.getElementById('total_cost').textContent = 'Total Cost: $' + totalCost.toFixed(2);
+                document.getElementById('tax_amount').textContent = 'Tax: $' + taxAmount.toFixed(2);
+                document.getElementById('final_total').textContent = 'Total with Tax: $' + finalTotal.toFixed(2);
+            } else {
+                document.getElementById('day_count').textContent = '0 days';
+                document.getElementById('total_cost').textContent = 'Total Cost: $0.00';
+                document.getElementById('tax_amount').textContent = 'Tax: $0.00';
+                document.getElementById('final_total').textContent = 'Total with Tax: $0.00';
+            }
+        }
+        function validateForm() {
+            var startDate = new Date(document.getElementById('start_date').value);
+            var endDate = new Date(document.getElementById('end_date').value);
+            var termsChecked = document.getElementById('terms').checked;
+            
+            document.getElementById('feedback').textContent = '';
+
+            if (!termsChecked) {
+                document.getElementById('feedback').textContent = 'Please agree to the Terms and Conditions.';
+                return false;
+            }
+
+            if (endDate <= startDate) {
+                document.getElementById('feedback').textContent = 'End date must be after start date.';
+                return false;
+            }
+
+            return true; 
+        }
+
+        document.querySelector('.booking-form').onsubmit = function() {
+            var termsCheckbox = document.getElementById('terms');
+            if (!termsCheckbox.checked) {
+                alert('Please agree to the Terms and Conditions.');
+                return false; 
+            }
+        return true;
+    };
+    </script>
+</body>
+</html>

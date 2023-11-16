@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Rent-a-Car</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .faq-header {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .faq-body .question {
+            background: #eaeaea;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+        .faq-body .answer {
+            margin: 5px 0;
+            padding: 10px;
+            background: #f8f8f8;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="faq-header">
+            <h1>Frequently Asked Questions</h1>
+        </div>
+        <div class="faq-body">
+            <div class="faq">
+                <div class="question">
+                    <h2>How do I rent a car?</h2>
+                </div>
+                <div class="answer">
+                    <p>You can rent a car by visiting our booking page or contacting us directly over the phone.</p>
+                </div>
+
+                <div class="question">
+                    <h2>What documents do I need to rent a car?</h2>
+                </div>
+                <div class="answer">
+                    <p>You will need a valid driver's license and a credit card in your name when you come to pick up the vehicle.</p>
+                </div>
+
+                <div class="question">
+                    <h2>Can I add an additional driver?</h2>
+                </div>
+                <div class="answer">
+                    <p>Yes, additional drivers are permitted as long as they meet the same requirements as the primary driver.</p>
+                </div>
+
+                <!-- Add more questions and answers as needed -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple FAQ toggle script
+        document.addEventListener('DOMContentLoaded', function(){
+            const questions = document.querySelectorAll('.question');
+
+            questions.forEach(function(question){
+                question.addEventListener('click', function(){
+                    this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
