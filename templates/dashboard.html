@@ -272,9 +272,7 @@
     <header>
         <nav>
             <ul>
-                <!-- Link to the browse cars page -->
                 <li><a href="{{ url_for('browse_cars') }}">Browse Cars</a></li>
-                <!-- Link to the FAQ page -->
                 <li><a href="{{ url_for('faq') }}">FAQ</a></li>
             </ul>
         </nav>
@@ -282,24 +280,18 @@
     <div class="search-rentals-container">
         <h2>Search car rentals</h2>
         <form class="search-rentals-form" action="#" method="post">
-            <!-- Pick-up & Drop-off location field -->
             <input type="text" placeholder="City, Airport or Address">
             
-            <!-- Pick-up date/time fields -->
             <input type="date" name="pick-up-date">
             <select name="pick-up-time">
                 <option value="noon">noon</option>
-                <!-- other time options -->
             </select>
             
-            <!-- Drop-off date/time fields -->
             <input type="date" name="drop-off-date">
             <select name="drop-off-time">
                 <option value="noon">noon</option>
-                <!-- other time options -->
             </select>
             
-            <!-- Search button -->
             <button type="submit">Search</button>
         </form>
     </div>
@@ -346,12 +338,10 @@
         </div>
     </div>
     
-<!-- Display user's first name and logout button -->
 <div class="top-right">
     <span>Welcome, {{ user.first_name }}!</span>
     <a href="{{ url_for('logout') }}" class="button">Logout</a>
 </div> 
-    <!-- Footer section -->
     <footer class="footer">
         <p>&copy; 2023 Rent-a-Car. All rights reserved.</p>
     </footer>
