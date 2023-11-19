@@ -23,12 +23,12 @@ function haversine(lat1, lon1, lat2, lon2) {
 
 // Function to handle successful location retrieval
 function onLocationFound(e) {
-    var radius = e.accuracy / 2;
+    var fixedRadiusMiles = 10; // Set a fixed 10-mile radius
 
     // Set the view to the user's location
     map.setView(e.latlng, 10);
 
-    rentalLocations.forEach(function (location) {
+    fakeLocations.forEach(function (location) {
         var distances = haversine(e.latlng.lat, e.latlng.lng, location.lat, location.lng);
         L.marker([location.lat, location.lng])
             .addTo(map)
@@ -36,9 +36,9 @@ function onLocationFound(e) {
     });
 
     L.marker(e.latlng).addTo(map)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+        .bindPopup("You are within " + fixedRadiusMiles + " miles from this point").openPopup();
 
-    L.circle(e.latlng, radius).addTo(map);
+    L.circle(e.latlng, { radius: fixedRadiusMiles * 1609.34, color: 'blue' }).addTo(map); // Convert miles to meters
 }
 
 // Function to handle location retrieval error
@@ -53,15 +53,18 @@ map.on('locationerror', onLocationError);
 // Request the user's location
 map.locate({ setView: true, maxZoom: 10 });
 
-// Add rental locations
-var rentalLocations = [
-    { lat: 35.7796, lng: -78.6382, name: 'Raleigh, North Carolina' },
-    { lat: 35.5951, lng: -77.3739, name: 'Greenville, North Carolina' },
-    { lat: 35.2271, lng: -80.8431, name: 'Charlotte, North Carolina' },
-    { lat: 40.7128, lng: -74.0060, name: 'New York City, New York' },
-    { lat: 25.7617, lng: -80.1918, name: 'Miami, Florida' },
-    { lat: 33.7490, lng: -84.3880, name: 'Atlanta, Georgia' },
-    { lat: 32.7765, lng: -79.9311, name: 'Charleston, South Carolina' },
+// Add fake locations
+var fakeLocations = [
+    { lat: 35.7796, lng: -78.6382, name: '123 Main St, Raleigh, NC 27601'},
+    { lat: 35.5951, lng: -77.3739, name: '456 Oak St, Greenville, NC 27834' },
+    { lat: 35.2271, lng: -80.8431, name: '789 Pine St, Charlotte, NC 28202' },
+    { lat: 36.0726, lng: -79.7920, name: '101 Elm St, Greensboro, NC 27401' },
+    { lat: 35.9132, lng: -79.0558, name: '202 Maple St, Chapel Hill, NC 27514' },
+    { lat: 35.7795, lng: -78.6382, name: '303 Birch St, Durham, NC 27701' },
+    { lat: 36.2168, lng: -81.6745, name: '404 Cedar St, Boone, NC 28607' },
+    { lat: 35.5951, lng: -82.5515, name: '505 Pine St, Asheville, NC 28801' },
+    { lat: 34.2257, lng: -77.9447, name: '606 Oak St, Wilmington, NC 28401' },
+    // Add more fake locations as needed
 ];
 
 
