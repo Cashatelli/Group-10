@@ -268,6 +268,7 @@
             <ul>
                 <li><a href="{{ url_for('browse_cars') }}">Browse Cars</a></li>
                 <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+                <li><a href="{{ url_for('current_reservations') }}">Current Reservations</a></li>
             </ul>
         </nav>
     </header>
@@ -278,12 +279,10 @@
             
             <input type="date" name="pick-up-date">
             <select name="pick-up-time">
-                <option value="noon">noon</option>
             </select>
             
             <input type="date" name="drop-off-date">
             <select name="drop-off-time">
-                <option value="noon">noon</option>
             </select>
             
             <button type="submit">Search</button>

@@ -195,7 +195,14 @@ body {
                     <input type="password" name="password" placeholder="Password" class="login-input">
                     <i class="fa fa-lock"></i>
                 </div>
-                <button type="submit" class="login-btn">Create Account</button>
+                <div style="position:relative;">
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" class="login-input">
+                    <i class="fa fa-lock"></i>
+                </div>
+                <div style="position:relative;">
+                    <input type="date" name="DateOfBirth" class="login-input">
+                </div>
+                <button type="submit" class="login-btn" onclick="validateAndSubmit()" >Create Account</button>
             </form>
         </div>
         
@@ -224,6 +231,30 @@ body {
                 signUpTab.classList.add('active');
                 signInTab.classList.remove('active');
             });
+            function calculateAge(dob) {
+                const birthDate = new Date(dob);
+                const difference = Date.now() - birthDate.getTime();
+                const ageDate = new Date(difference);
+                return Math.abs(ageDate.getUTCFullYear() - 1970);
+                }
+
+            function validateAndSubmit() {
+                const form = document.getElementById('signUpForm');
+                const dob = form.elements['DateOfBirth'].value;
+                const password = form.elements['password'].value;
+                const confirmPassword = form.elements['confirm_password'].value;
+
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match.");
+                    return;
+                }
+
+                if (calculateAge(dob) < 25) {
+                    alert("You must be at least 25 years old.");
+                    return;
+                }
+                form.submit();
+            }
         });
     </script>
 </body>
