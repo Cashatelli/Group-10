@@ -148,7 +148,7 @@
             {% if car.available %}
                 <a href="{{ url_for('book_car', car_vin=car.vin) }}" class="reserve-button">Reserve</a>
             {% else %}
-                <p>This car is currently reserved.</p>
+                <p>This car is currently reserved until {end.date}.</p>
             {% endif %}
         </div>
         {% endfor %}
