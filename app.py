@@ -112,6 +112,7 @@ with app.app_context():
         Car(vin="JTEAAAH1MJ0032544", cartype="SUV", make="Toyota", model="Venza LE", year=2021, seats=5, ppd=91, mpg=35, mileage=43820, location="Ashville", image="toyota_venza_2021.jpg"),
         Car(vin="WA1ECCFS9HR006677", cartype="SUV", make="Audi", model="Q3", year=2017, seats=5, ppd=83, mpg=22, mileage=52850, location="Charlotte", image="audi_q3_2017.jpg"),
         Car(vin="4S4WMAPD9M3423270", cartype="SUV", make="Subaru", model="Ascent", year=2021, seats=5, ppd=75, mpg=24, mileage=72976, location="Wilmington", image="subaru_ascent.jpg"),
+
         Car(vin="2C3CDZBT3PH527800", cartype="Coupe", make="Dodge", model="Challenger R/T", year=2023, seats=5, ppd=95, mpg=18, mileage=2567, location="Charlotte", image="dodge_challenger_2023.jpg"),
         Car(vin="1G1YM2D7XH5102245", cartype="Coupe", make="Chevrolet", model="Corvette Z51 LT3", year=2017, seats=2, ppd=90, mpg=17, mileage=3782, location="Durham", image="chev_corvette_2017.jpg"),
         Car(vin="1FA6P9TH7M5156492", cartype="Coupe", make="Ford", model="Mustang", year=2021, seats=2, ppd=83, mpg=20, mileage=836075, location="Greensboro", image="ford_mustang_2021.jpg"),
@@ -125,8 +126,8 @@ with app.app_context():
         Car(vin="WBA3N5C53Fk197971", cartype="Coupe", make="BMW", model="4 Series 428i xDrive", year=2015, seats=2, ppd=70, mpg=27, mileage=120728, location="Charlotte", image="bmw_4series_2022.jpg"),
         Car(vin="WAUWFAFRXBA023588", cartype="Coupe", make="Audi", model="A5 Prestige", year=2020, seats=2, ppd=65, mpg=24, mileage=123527, location="Wilmington", image="audi_prestige_2020.jpg")
 
+=======
         
-        #Suv, ect 
     ]
     for car in cars:
         db.session.add(car)
@@ -217,8 +218,6 @@ def browse_cars():
         car.available = len(active_bookings) == 0
 
     return render_template('browse_cars.html', cars=cars, category_name=category_name)
-
-from datetime import datetime
 
 @app.route('/book_car/<string:car_vin>', methods=['GET', 'POST'])
 @login_required
