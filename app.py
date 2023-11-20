@@ -96,7 +96,7 @@ with app.app_context():
         Car(vin="KMHLN4AJ0PU047489", cartype="Sedan", make="Hyundai", model="Elantra", year=2023, seats=5, ppd=114, mpg=51, mileage=10820, location="Winterville", image="hyundai_elantra_2023.jpg"),
         Car(vin="3KPF24AD8ME359039", cartype="Sedan", make="Kia", model="Forte", year=2021, seats=5, ppd=81, mpg=34, mileage=17850, location="Winterville", image="kia_forte_2021.jpg"),
         Car(vin="5XXGT4L33KG330445", cartype="Sedan", make="Kia", model="Optima", year=2019, seats=5, ppd=77, mpg=29, mileage=37976, location="Charlotte", image="kia_optima_2019.jpg"),
-        #Suv, ect
+        #Suv
         Car(vin="LRBFXESX6HD117758", cartype="SUV", make="Buick", model="Envision", year=2017, seats=5, ppd=80, mpg=22, mileage=32996, location="Boone", image="buick_en_2017.jpg"),
         Car(vin="1FMCU0F6XLUA23677", cartype="SUV", make="Ford", model="Escape S", year=2020, seats=5, ppd=92, mpg=27, mileage=77258, location="Charlotte", image="ford_escape_2020.jpg"),
         Car(vin="JF2GTHMC4N8213990", cartype="SUV", make="Subaru", model="Crosstrek", year=2022, seats=5, ppd=95, mpg=27, mileage=20308, location="Raleigh", image="subaru_cross_2022.jpg"),
@@ -228,21 +228,54 @@ def faq():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template('dashboard.html', user=current_user)
+    # Fetch data for dropdowns
+    cities = Car.query.with_entities(Car.location).distinct().all()
+    makes = Car.query.with_entities(Car.make).distinct().all()
+    categories = Car.query.with_entities(Car.cartype).distinct().all()
 
+    return render_template('dashboard.html', user=current_user, cities=cities, makes=makes, categories=categories)
 
 @app.route('/browse_cars')
+@login_required
 def browse_cars():
-    category_name = request.args.get('category', 'All')
+    city = request.args.get('city', None)
+    make = request.args.get('make', None)
+    cartype = request.args.get('cartype', None) 
+    model = request.args.get('model', None) 
+    seats = request.args.get('seats', None)
+    max_ppd = request.args.get('max_ppd', None)
+    sort_option = request.args.get('sort', 'ppd_asc')
+
+    cities = Car.query.with_entities(Car.location).distinct().all()
+    makes = Car.query.with_entities(Car.make).distinct().all()
+    categories = Car.query.with_entities(Car.cartype).distinct().all()
+
+
+    query = Car.query
+    if city:
+        query = query.filter(Car.location == city)
+    if make:
+        query = query.filter(Car.make == make)
+    if cartype:  
+        query = query.filter(Car.cartype == cartype)
+    if model: 
+        query = query.filter(Car.model == model)
+    if seats:
+        query = query.filter(Car.seats == seats)
+    if max_ppd:
+        query = query.filter(Car.ppd <= max_ppd)
+
+    # Sorting logic
+    if sort_option == 'ppd_asc':
+        query = query.order_by(Car.ppd.asc())
+    elif sort_option == 'ppd_desc':
+        query = query.order_by(Car.ppd.desc())
+
+    cars = query.all()
+
+    # Loop to determine availability
     today = date.today()
-
-    if category_name != 'All':
-        cars = Car.query.filter_by(cartype=category_name).all()
-    else:
-        cars = Car.query.all()
-
     for car in cars:
-        # Check if the car has any active bookings for today
         active_bookings = Booking.query.filter(
             Booking.car_id == car.vin,
             Booking.start_date <= today,
@@ -250,7 +283,13 @@ def browse_cars():
         ).all()
         car.available = len(active_bookings) == 0
 
-    return render_template('browse_cars.html', cars=cars, category_name=category_name,  user=current_user)
+    return render_template('browse_cars.html', 
+                            cars=cars, 
+                            category_name=cartype, 
+                            user=current_user,
+                            cities=cities, 
+                            makes=makes, 
+                            categories=categories)
 
 @app.route('/book_car/<string:car_vin>', methods=['GET', 'POST'])
 @login_required

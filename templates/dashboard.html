@@ -180,11 +180,40 @@
         <div class="search-container">
             <h2>Search Car Rentals</h2>
             <form class="search-rentals-form" action="{{ url_for('browse_cars') }}" method="GET">
-                <input type="text" name="city" placeholder="Enter the city">
-                <input type="text" name="make" placeholder="Car Make">
-                <input type="text" name="model" placeholder="Car Model">
+                <!-- City Dropdown -->
+                <select name="city">
+                    <option value="">Select City</option>
+                    {% for city in cities %}
+                    <option value="{{ city.location }}">{{ city.location }}</option>
+                    {% endfor %}
+                </select>
+        
+                <!-- Car Make Dropdown -->
+                <select name="make">
+                    <option value="">Select Make</option>
+                    {% for make in makes %}
+                    <option value="{{ make.make }}">{{ make.make }}</option>
+                    {% endfor %}
+                </select>
+        
+                <!-- Car Type Dropdown -->
+                <select name="cartype">
+                    <option value="">Select Category</option>
+                    {% for category in categories %}
+                    <option value="{{ category.cartype }}">{{ category.cartype }}</option>
+                    {% endfor %}
+                </select>
+        
+                <!-- Other Fields -->
                 <input type="number" name="seats" placeholder="Number of Seats">
                 <input type="number" name="max_ppd" placeholder="Max Price Per Day">
+        
+                <!-- Sorting Dropdown -->
+                <select name="sort">
+                    <option value="ppd_asc">Price Low to High</option>
+                    <option value="ppd_desc">Price High to Low</option>
+                </select>
+        
                 <button type="submit">Search</button>
             </form>
         </div>
