@@ -81,6 +81,58 @@ with app.app_context():
         Car(vin="3C6JR6DT6GG239518", cartype="Pickup", make="Ram", model="1500", year=2016, seats=2, ppd=94, mpg=19, mileage=49084, location="Winterville", image="ram_1500_2016.jpg"),
         Car(vin="1FTMF1C88GKF91569", cartype="Pickup", make="Ford", model="F-150", year=2016, seats=2, ppd=90, mpg=21, mileage=97477, location="Charlotte", image="ford_F-150_2016.jpg"),
         #Sedan Cars
+        Car(vin="WBAKB8C51CC964616", cartype="Sedan", make="BMW", model="7_Series", year=2012, seats=5, ppd=75, mpg=18, mileage=91767, location="Raleigh", image="Sedan_image.jpg"),        
+        Car(vin="1G11B5SA1DF256175", cartype="Sedan", make="Chevrolet", model="Malibu", year=2013, seats=5, ppd=88, mpg=27, mileage=137018, location="Charlotte", image="Sedan_image.jpg"),
+        Car(vin="W1KWF8DBXMR642820", cartype="Sedan", make="Mercedes-Benz", model="C-Class", year=2021, seats=5, ppd=126, mpg=29, mileage=35799, location="Raleigh", image="Sedan_image.jpg"),
+        Car(vin="7JR102FK9LG045640", cartype="Sedan", make="Volvo", model="S60", year=2020, seats=5, ppd=110, mpg=29, mileage=36145, location="Winterville", image="Sedan_image.jpg"),
+        Car(vin="5NPE34AF0KH785469", cartype="Sedan", make="Hyundai", model="Sonata", year=2019, seats=5, ppd=97, mpg=29, mileage=120714, location="Charlotte", image="Sedan_image.jpg"),
+        Car(vin="1G6DN5RW3M0110685", cartype="Sedan", make="Cadillac", model="CT5", year=2021, seats=5, ppd=131, mpg=24, mileage=20698, location="Winterville", image="Sedan_image.jpg"),
+        Car(vin="19UUB2F39GA012467", cartype="Sedan", make="Acura", model="TLX", year=2016, seats=5, ppd=83, mpg=28, mileage=127952, location="Winterville", image="Sedan_image.jpg"),
+        Car(vin="KNAE35LD3N6099133", cartype="Sedan", make="Kia", model="Stinger", year=2022, seats=5, ppd=103, mpg=27, mileage=32002, location="Charlotte", image="Sedan_image.jpg"),
+        Car(vin="4T1K61AK9MU614780", cartype="Sedan", make="Toyota", model="Camry", year=2021, seats=5, ppd=78, mpg=32, mileage=47272, location="Raleigh", image="Sedan_image.jpg"),
+        Car(vin="3FA6P0HD0LR143456", cartype="Sedan", make="Ford", model="Fusion", year=2020, seats=5, ppd=91, mpg=28, mileage=40977, location="Raleigh", image="Sedan_image.jpg"),
+        Car(vin="3KPF54AD3NE448185", cartype="Sedan", make="Kia", model="Forte", year=2022, seats=5, ppd=99, mpg=35, mileage=11564, location="Charlotte", image="Sedan_image.jpg"),
+        Car(vin="7JRBR0FM4NG179054", cartype="Sedan", make="Volvo", model="S60", year=2022, seats=5, ppd=106, mpg=31, mileage=15365, location="Raleigh", image="Sedan_image.jpg"),
+        Car(vin="KMHLN4AJ0PU047489", cartype="Sedan", make="Hyundai", model="Elantra", year=2023, seats=5, ppd=114, mpg=51, mileage=10820, location="Winterville", image="Sedan_image.jpg"),
+        Car(vin="3KPF24AD8ME359039", cartype="Sedan", make="Kia", model="Forte", year=2021, seats=5, ppd=81, mpg=34, mileage=17850, location="Winterville", image="Sedan_image.jpg"),
+        Car(vin="5XXGT4L33KG330445", cartype="Sedan", make="Kia", model="Optima", year=2019, seats=5, ppd=77, mpg=29, mileage=37976, location="Charlotte", image="Sedan_image.jpg"),
+<<<<<<< HEAD
+        #Suv, ect
+=======
+        
+>>>>>>> 2418f3060174031e1096b161e18138a0532afd2e
+        Car(vin="LRBFXESX6HD117758", cartype="SUV", make="Buick", model="Envision", year=2017, seats=5, ppd=80, mpg=22, mileage=32996, location="Boone", image="buick_en_2017.jpg"),
+        Car(vin="1FMCU0F6XLUA23677", cartype="SUV", make="Ford", model="Escape S", year=2020, seats=5, ppd=92, mpg=27, mileage=77258, location="Charlotte", image="ford_escape_2020.jpg"),
+        Car(vin="JF2GTHMC4N8213990", cartype="SUV", make="Subaru", model="Crosstrek", year=2022, seats=5, ppd=95, mpg=27, mileage=20308, location="Raleigh", image="subaru_cross_2022.jpg"),
+        Car(vin="3FMCR9B67MRA12544", cartype="SUV", make="Ford", model="Bronco Sport", year=2021, seats=5, ppd=110, mpg=25, mileage=126954, location="Greenville", image="ford_bronco_2021.jpg"),
+        Car(vin="JN8AY2ND3H9006018", cartype="SUV", make="Nissan", model="Armada SL", year=2017, seats=5, ppd=82, mpg=19, mileage=86400, location="Durham", image="nissan_armada_2017.jpg"),
+        Car(vin="1C4BJWFG5GL218652", cartype="SUV", make="Jeep", model="Wrangler Rubicon", year=2016, seats=5, ppd=97, mpg=20, mileage=80266, location="Greensboro", image="jeep_wrang_2016.jpg"),
+        Car(vin="JTEMU5JR1M5865497", cartype="SUV", make="Toyota", model="4Runner SR5", year=2021, seats=5, ppd=89, mpg=18, mileage=127934, location="Asheville", image="toyota_4runner_2021.jpg"),
+        Car(vin="5LMCJ1CA4PUL10877", cartype="SUV", make="Lincoln", model="Corsair", year=2023, seats=5, ppd=110, mpg=22, mileage=39902, location="Wilmington", image="lincoln_corsair_2023.jpg"),
+        Car(vin="1FMEE5DH9MLA93492", cartype="SUV", make="Ford", model="Bronco Badlands", year=2021, seats=5, ppd=121, mpg=18, mileage=41272, location="Durham", image="ford_bronco_badlands_2021.jpg"),
+        Car(vin="1GKS1BKD0NR264988", cartype="SUV", make="GMC", model="Yukon SLT", year=2022, seats=5, ppd=87, mpg=20, mileage=86977, location="Raleigh", image="gmc_yukon_2022.jpg"),
+        Car(vin="KL79MNSL4PB194091", cartype="SUV", make="Chevrolet", model="TrailBlazer LS", year=2023, seats=5, ppd=99, mpg=26, mileage=37564, location="Greenville", image="chevrolet_trailblazer_2023.jpg"),
+        Car(vin="5XYKT3A69DG406850", cartype="SUV", make="Kia", model="Sorento LX", year=2013, seats=5, ppd=68, mpg=23, mileage=62365, location="Boone", image="kia_sorento_2013.jpg"),
+        Car(vin="JTEAAAH1MJ0032544", cartype="SUV", make="Toyota", model="Venza LE", year=2021, seats=5, ppd=91, mpg=35, mileage=43820, location="Ashville", image="toyota_venza_2021.jpg"),
+        Car(vin="WA1ECCFS9HR006677", cartype="SUV", make="Audi", model="Q3", year=2017, seats=5, ppd=83, mpg=22, mileage=52850, location="Charlotte", image="audi_q3_2017.jpg"),
+<<<<<<< HEAD
+        Car(vin="4S4WMAPD9M3423270", cartype="SUV", make="Subaru", model="Ascent", year=2021, seats=5, ppd=75, mpg=24, mileage=72976, location="Wilmington", image="subaru_ascent.jpg"),
+        Car(vin="2C3CDZBT3PH527800", cartype="Coupe", make="Dodge", model="Challenger R/T", year=2023, seats=5, ppd=95, mpg=18, mileage=2567, location="Charlotte", image="dodge_challenger_2023.jpg"),
+        Car(vin="1G1YM2D7XH5102245", cartype="Coupe", make="Chevrolet", model="Corvette Z51 LT3", year=2017, seats=2, ppd=90, mpg=17, mileage=3782, location="Durham", image="chev_corvette_2017.jpg"),
+        Car(vin="1FA6P9TH7M5156492", cartype="Coupe", make="Ford", model="Mustang", year=2021, seats=2, ppd=83, mpg=20, mileage=836075, location="Greensboro", image="ford_mustang_2021.jpg"),
+        Car(vin="1G1FB1RX8H0106050", cartype="Coupe", make="Chevrolet", model="Camaro LT 1LT", year=2017, seats=2, ppd=89, mpg=22, mileage=85934, location="Asheville", image="chev_camaro_2017.jpg"),
+        Car(vin="1G1YY2D75H5120754", cartype="Coupe", make="Chevrolet", model="Corvette Grand Sport LT2", year=2017, seats=2, ppd=97, mpg=16, mileage=82902, location="Wilmington", image="chev_grand_2017.jpg"),
+        Car(vin="2C3DZJG1KH7023821", cartype="Coupe", make="Dodge", model="Challenger GT", year=2019, seats=2, ppd=80, mpg=19, mileage=74172, location="Raleigh", image="dodge_GT_2019.jpg"),
+        Car(vin="JF1ZCAC17L9702394", cartype="Coupe", make="Subaru", model="BRZ Limited", year=2020, seats=2, ppd=82, mpg=22, mileage=24928, location="Raleigh", image="subaru_brz_2020.jpg"),
+        Car(vin="1FA6P8SJ5M5502138", cartype="Coupe", make="Ford", model="Mustang Shelby GT500", year=2021, seats=2, ppd=99, mpg=15, mileage=34254, location="Greenville", image="ford_shelby_2020.jpg"),
+        Car(vin="JF1ZCAC14H9601370", cartype="Coupe", make="Subaru", model="BRZ", year=2017, seats=2, ppd=73, mpg=25, mileage=17734, location="Asheville", image="subaru_brz_2017.jpg"),
+        Car(vin="1FA6P8CF5N5143126", cartype="Coupe", make="Ford", model="Mustang GT", year=2022, seats=2, ppd=92, mpg=26, mileage=3199, location="Durham", image="ford_must_2022.jpg"),
+        Car(vin="WBA3N5C53Fk197971", cartype="Coupe", make="BMW", model="4 Series 428i xDrive", year=2015, seats=2, ppd=70, mpg=27, mileage=120728, location="Charlotte", image="bmw_4series_2022.jpg"),
+        Car(vin="WAUWFAFRXBA023588", cartype="Coupe", make="Audi", model="A5 Prestige", year=2020, seats=2, ppd=65, mpg=24, mileage=123527, location="Wilmington", image="audi_prestige_2020.jpg")
+
+=======
+        Car(vin="4S4WMAPD9M3423270", cartype="SUV", make="Subaru", model="Ascent", year=2021, seats=5, ppd=75, mpg=24, mileage=72976, location="Wilmington", image="subaru_ascent.jpg")
+>>>>>>> 2418f3060174031e1096b161e18138a0532afd2e
         Car(vin="WBAKB8C51CC964616", cartype="Sedan", make="BMW", model="7_Series", year=2012, seats=5, ppd=75, mpg=18, mileage=91767, location="Raleigh", image="bmw_7series_2012.jpg"),        
         Car(vin="1G11B5SA1DF256175", cartype="Sedan", make="Chevrolet", model="Malibu", year=2013, seats=5, ppd=88, mpg=27, mileage=137018, location="Charlotte", image="chevrolet_malibu_2013.jpg"),
         Car(vin="W1KWF8DBXMR642820", cartype="Sedan", make="Mercedes-Benz", model="C-Class", year=2021, seats=5, ppd=126, mpg=29, mileage=35799, location="Raleigh", image="mercedes-benz_c-class_2021.jpg"),
@@ -98,7 +150,7 @@ with app.app_context():
         Car(vin="5XXGT4L33KG330445", cartype="Sedan", make="Kia", model="Optima", year=2019, seats=5, ppd=77, mpg=29, mileage=37976, location="Charlotte", image="kia_optima_2019.jpg")
         #Suv, ect 
     ]
-    for car in cars: 
+    for car in cars:
         db.session.add(car)
     db.session.commit()
 

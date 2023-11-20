@@ -59,7 +59,6 @@ var fakeLocations = [
     { lat: 35.5951, lng: -77.3739, name: '456 Oak St, Greenville, NC 27834' },
     { lat: 35.2271, lng: -80.8431, name: '789 Pine St, Charlotte, NC 28202' },
     { lat: 36.0726, lng: -79.7920, name: '101 Elm St, Greensboro, NC 27401' },
-    { lat: 35.9132, lng: -79.0558, name: '202 Maple St, Chapel Hill, NC 27514' },
     { lat: 35.7795, lng: -78.6382, name: '303 Birch St, Durham, NC 27701' },
     { lat: 36.2168, lng: -81.6745, name: '404 Cedar St, Boone, NC 28607' },
     { lat: 35.5951, lng: -82.5515, name: '505 Pine St, Asheville, NC 28801' },
