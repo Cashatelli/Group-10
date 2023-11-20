@@ -273,11 +273,14 @@
         </nav>
     </header>
     <div class="search-rentals-container">
-        <h2>Search car rentals</h2>
-        <form class="search-rentals-form" action="#" method="post">
-            <input type="text" placeholder="Enter the city">
-            
-        
+        <h2>Search Car Rentals</h2>
+        <form class="search-rentals-form" action="{{ url_for('browse_cars') }}" method="GET">
+            <input type="text" name="city" placeholder="Enter the city">
+            <input type="text" name="make" placeholder="Car Make">
+            <input type="text" name="model" placeholder="Car Model">
+            <input type="number" name="seats" placeholder="Number of Seats">
+            <input type="number" name="max_ppd" placeholder="Max Price Per Day">
+            <button type="submit">Search</button>
         </form>
     </div>
     <div class="category-container" >

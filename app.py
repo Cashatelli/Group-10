@@ -96,11 +96,7 @@ with app.app_context():
         Car(vin="KMHLN4AJ0PU047489", cartype="Sedan", make="Hyundai", model="Elantra", year=2023, seats=5, ppd=114, mpg=51, mileage=10820, location="Winterville", image="Sedan_image.jpg"),
         Car(vin="3KPF24AD8ME359039", cartype="Sedan", make="Kia", model="Forte", year=2021, seats=5, ppd=81, mpg=34, mileage=17850, location="Winterville", image="Sedan_image.jpg"),
         Car(vin="5XXGT4L33KG330445", cartype="Sedan", make="Kia", model="Optima", year=2019, seats=5, ppd=77, mpg=29, mileage=37976, location="Charlotte", image="Sedan_image.jpg"),
-<<<<<<< HEAD
-        #Suv, ect
-=======
         
->>>>>>> 2418f3060174031e1096b161e18138a0532afd2e
         Car(vin="LRBFXESX6HD117758", cartype="SUV", make="Buick", model="Envision", year=2017, seats=5, ppd=80, mpg=22, mileage=32996, location="Boone", image="buick_en_2017.jpg"),
         Car(vin="1FMCU0F6XLUA23677", cartype="SUV", make="Ford", model="Escape S", year=2020, seats=5, ppd=92, mpg=27, mileage=77258, location="Charlotte", image="ford_escape_2020.jpg"),
         Car(vin="JF2GTHMC4N8213990", cartype="SUV", make="Subaru", model="Crosstrek", year=2022, seats=5, ppd=95, mpg=27, mileage=20308, location="Raleigh", image="subaru_cross_2022.jpg"),
@@ -115,8 +111,8 @@ with app.app_context():
         Car(vin="5XYKT3A69DG406850", cartype="SUV", make="Kia", model="Sorento LX", year=2013, seats=5, ppd=68, mpg=23, mileage=62365, location="Boone", image="kia_sorento_2013.jpg"),
         Car(vin="JTEAAAH1MJ0032544", cartype="SUV", make="Toyota", model="Venza LE", year=2021, seats=5, ppd=91, mpg=35, mileage=43820, location="Ashville", image="toyota_venza_2021.jpg"),
         Car(vin="WA1ECCFS9HR006677", cartype="SUV", make="Audi", model="Q3", year=2017, seats=5, ppd=83, mpg=22, mileage=52850, location="Charlotte", image="audi_q3_2017.jpg"),
-<<<<<<< HEAD
         Car(vin="4S4WMAPD9M3423270", cartype="SUV", make="Subaru", model="Ascent", year=2021, seats=5, ppd=75, mpg=24, mileage=72976, location="Wilmington", image="subaru_ascent.jpg"),
+
         Car(vin="2C3CDZBT3PH527800", cartype="Coupe", make="Dodge", model="Challenger R/T", year=2023, seats=5, ppd=95, mpg=18, mileage=2567, location="Charlotte", image="dodge_challenger_2023.jpg"),
         Car(vin="1G1YM2D7XH5102245", cartype="Coupe", make="Chevrolet", model="Corvette Z51 LT3", year=2017, seats=2, ppd=90, mpg=17, mileage=3782, location="Durham", image="chev_corvette_2017.jpg"),
         Car(vin="1FA6P9TH7M5156492", cartype="Coupe", make="Ford", model="Mustang", year=2021, seats=2, ppd=83, mpg=20, mileage=836075, location="Greensboro", image="ford_mustang_2021.jpg"),
@@ -130,9 +126,6 @@ with app.app_context():
         Car(vin="WBA3N5C53Fk197971", cartype="Coupe", make="BMW", model="4 Series 428i xDrive", year=2015, seats=2, ppd=70, mpg=27, mileage=120728, location="Charlotte", image="bmw_4series_2022.jpg"),
         Car(vin="WAUWFAFRXBA023588", cartype="Coupe", make="Audi", model="A5 Prestige", year=2020, seats=2, ppd=65, mpg=24, mileage=123527, location="Wilmington", image="audi_prestige_2020.jpg")
 
-=======
-        Car(vin="4S4WMAPD9M3423270", cartype="SUV", make="Subaru", model="Ascent", year=2021, seats=5, ppd=75, mpg=24, mileage=72976, location="Wilmington", image="subaru_ascent.jpg")
->>>>>>> 2418f3060174031e1096b161e18138a0532afd2e
     ]
 
     for car in cars:
@@ -224,8 +217,6 @@ def browse_cars():
         car.available = len(active_bookings) == 0
 
     return render_template('browse_cars.html', cars=cars, category_name=category_name)
-
-from datetime import datetime
 
 @app.route('/book_car/<string:car_vin>', methods=['GET', 'POST'])
 @login_required
