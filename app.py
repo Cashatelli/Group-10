@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, abort
+from flask import Flask, render_template, request, redirect, url_for, flash, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker, session as db_session
 from flask import session
 from datetime import datetime, date
 from flask_mail import Mail, Message
-
+import math
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Group10'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -250,8 +250,8 @@ def browse_cars():
     makes = Car.query.with_entities(Car.make).distinct().all()
     categories = Car.query.with_entities(Car.cartype).distinct().all()
 
-
     query = Car.query
+
     if city:
         query = query.filter(Car.location == city)
     if make:
@@ -331,7 +331,14 @@ def book_car(car_vin):
         return redirect(url_for('current_reservations'))
 
     return render_template('book_car.html', car=car, user=current_user)
-      
+
+@app.route('/api/cars')
+@login_required
+def api_cars():
+    cars = Car.query.all()
+    car_data = [{"vin": car.vin, "make": car.make, "model": car.model, "location": car.location} for car in cars]
+    return jsonify(car_data)    
+
 @app.route('/current_reservations')
 @login_required
 def current_reservations():

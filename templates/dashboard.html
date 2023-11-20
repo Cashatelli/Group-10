@@ -164,6 +164,11 @@
             height: 100%;
             width: 100%;
         }
+        .search-rentals-form select,
+        .search-rentals-form input,
+        .search-rentals-form button {
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -180,7 +185,7 @@
         <div class="search-container">
             <h2>Search Car Rentals</h2>
             <form class="search-rentals-form" action="{{ url_for('browse_cars') }}" method="GET">
-                <!-- City Dropdown -->
+                <!-- City Dropdown / add leave NA in specific font-->
                 <select name="city">
                     <option value="">Select City</option>
                     {% for city in cities %}
@@ -190,7 +195,7 @@
         
                 <!-- Car Make Dropdown -->
                 <select name="make">
-                    <option value="">Select Make</option>
+                    <option value="">Select Make  </option>
                     {% for make in makes %}
                     <option value="{{ make.make }}">{{ make.make }}</option>
                     {% endfor %}
@@ -217,6 +222,10 @@
                 <button type="submit">Search</button>
             </form>
         </div>
+        <!-- QUICKSORT ???? <div>
+            <input type="number" id="searchRadius" placeholder="Enter radius in miles">
+            <button onclick="searchInRadius()">Search Within Radius</button>
+        </div> -->
         <div class="map-container">
             <div id="map">
             <p>Map & Locations</p>

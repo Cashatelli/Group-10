@@ -54,6 +54,7 @@ map.on('locationerror', onLocationError);
 map.locate({ setView: true, maxZoom: 10 });
 
 // Add fake locations
+// make it so these locations are hooked up with "cities" so you can do a quick search based on user input miles to show all cars within that radius
 var fakeLocations = [
     { lat: 35.7796, lng: -78.6382, name: '303 Birch St, Durham, NC 27701'},
     { lat: 35.5951, lng: -77.3739, name: '456 Oak St, Greenville, NC 27834' },
@@ -63,7 +64,16 @@ var fakeLocations = [
     { lat: 36.2168, lng: -81.6745, name: '404 Cedar St, Boone, NC 28607' },
     { lat: 35.5951, lng: -82.5515, name: '505 Pine St, Asheville, NC 28801' },
     { lat: 34.2257, lng: -77.9447, name: '606 Oak St, Wilmington, NC 28401' },
-    // Add more fake locations as needed
 ];
+//Trying to make quick sort function based on current location
+function searchInRadius() {
+    var radius = parseInt(document.getElementById('searchRadius').value); // Get the radius value from input
 
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var userLat = position.coords.latitude;
+        var userLng = position.coords.longitude;
 
+        // Redirect to browse_cars with the necessary query parameters
+        window.location.href = `/browse_cars?userLat=${userLat}&userLng=${userLng}&radius=${radius}`;
+    });
+}
