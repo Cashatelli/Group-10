@@ -8,10 +8,10 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: #292929;
+            color: #5e5e5e;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
         .container {
             max-width: 1000px;
@@ -25,60 +25,78 @@
             text-align: center;
             color: #333;
         }
-        table {
+        .reservation-box {
+            background-color: #333;
+            color: #d0d0d0;
+            border: 1px solid #fff;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .reservation-box img {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+            height: auto;
+            border-radius: 4px;
         }
-        th, td {
-            text-align: left;
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #007bff;
-            color: white;
+        .reservation-details {
             padding: 10px;
         }
-        tr:hover {
-            background-color: #f2f2f2;
+        .time-remaining {
+            color: #28a745;
+            font-weight: bold;
         }
-        .cancel-link {
-            color: #dc3545;
+        .cancel-button {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            width: fit-content;
         }
-        .cancel-link:hover {
-            text-decoration: underline;
+        .cancel-button:hover {
+            background-color: #c82333;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        .disclaimer {
+            color: #ff0000;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Your Reservations</h1>
-        <table>
-            <tr>
-                <th>Reservation ID</th>
-                <th>Car</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-            {% for reservation in reservations %}
-                <tr>
-                    <td>{{ reservation.id }}</td>
-                    <td>{{ reservation.car.make }} {{ reservation.car.model }}</td>
-                    <td>{{ reservation.start_date.strftime('%Y-%m-%d') }}</td>
-                    <td>{{ reservation.end_date.strftime('%Y-%m-%d') }}</td>
-                    <td>{{ 'Current' if reservation.end_date >= today else 'Past' }}</td>
-                    <td>
-                        {% if reservation.end_date >= today %}
-                            <a href="{{ url_for('cancel_reservation', reservation_id=reservation.id) }}" class="cancel-link">Cancel</a>
-                        {% endif %}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
+        <h1>Your Current Reservations</h1>
+        {% for reservation in reservations %}
+        <div class="reservation-box">
+            <img src="{{ url_for('static', filename='images/' + reservation.car.image) }}" alt="{{ reservation.car.make }} {{ reservation.car.model }}"> 
+            <div class="reservation-details">
+                <h3>{{ reservation.car.make }} {{ reservation.car.model }}</h3>
+                <p>Year: {{ reservation.car.year }}</p>
+                <p>Seats: {{ reservation.car.seats }}</p>
+                <p>Price per day: ${{ reservation.car.ppd }}</p>
+                <p>Mileage: {{ reservation.car.mileage }} miles</p>
+                <p>Location: {{ reservation.car.location }}</p>
+                <p>Reservation End Date: {{ reservation.end_date.strftime('%Y-%m-%d') }}</p>
+                <p class="time-remaining">
+                    Time Remaining: {{ (reservation.end_date - today).days }} day(s)
+                </p>
+                {% if (reservation.end_date - today).days > 1 %}
+                    <a href="{{ url_for('cancel_reservation', reservation_id=reservation.id) }}" class="cancel-button">Cancel Reservation</a>
+                    <p class="disclaimer">* Cancellations must be made 24 hours before the start date.</p>
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+            <p>No current reservations.</p>
+        {% endfor %}
     </div>
 </body>
 </html>

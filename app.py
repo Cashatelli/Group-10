@@ -7,13 +7,22 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import sessionmaker, session as db_session 
 from flask import session
 from datetime import datetime, date
-
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Group10'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+#Mail Information
+app.config['MAIL_SERVER'] = 'smtp.gmail.com' 
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = 'rentacar5142@gmail.com'
+app.config['MAIL_PASSWORD'] = 'okin mldr iwbm cdqn'
+app.config['MAIL_DEFAULT_SENDER'] = 'rentacar5142@gmail.com'
+mail = Mail(app)
 
 login_manager = LoginManager()
 login_manager.login_view = 'login'
@@ -224,6 +233,14 @@ def book_car(car_vin):
         )
         db.session.add(new_booking)
         db.session.commit()
+       # After booking is successful
+        msg = Message("Car Reservation Confirmation",
+                      recipients=[current_user.email])
+        msg.body = f"Dear {current_user.first_name},\n\n" \
+                   f"You have successfully booked the {car.make} {car.model} from {start_date} to {end_date}.\n" \
+                   f"Total cost: ${total_cost}\n\n" \
+                   "Thank you for choosing our service."
+        mail.send(msg)
 
         flash(f'Car booked successfully for {total_days} days. Total cost: ${total_cost}', 'success')
         return redirect(url_for('current_reservations'))
@@ -238,6 +255,7 @@ def current_reservations():
     today = datetime.today().date()
 
     return render_template('current_reservations.html', reservations=reservations, today=today)
+
 @app.route('/cancel_reservation/<int:reservation_id>')
 @login_required
 def cancel_reservation(reservation_id):
@@ -251,7 +269,6 @@ def cancel_reservation(reservation_id):
 
     flash('Reservation canceled successfully', 'success')
     return redirect(url_for('current_reservations'))
-
 
 @app.route('/logout', methods=['GET'])
 @login_required

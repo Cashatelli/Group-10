@@ -102,7 +102,7 @@
         }
         .hero p {
             color: #000000; 
-            font-size: 2rem;
+            font-size: 1rem;
             margin-bottom: 2rem;
         }
         .reserve-button {
@@ -132,7 +132,7 @@
 <body>
     <div class="hero">
         <h1>Welcome to Rent-a-car</h1>
-        <p>Below are all {{ category_name }}s available at this time </p>
+        <p><b>Below are all {{ category_name }}s available at this time</b> </p>
     </div>
     <div class="container">
         {% for car in cars %}
@@ -148,7 +148,7 @@
             {% if car.available %}
                 <a href="{{ url_for('book_car', car_vin=car.vin) }}" class="reserve-button">Reserve</a>
             {% else %}
-                <p>This car is currently reserved.</p>
+                <p>This car is currently reserved until {end.date}.</p>
             {% endif %}
         </div>
         {% endfor %}
