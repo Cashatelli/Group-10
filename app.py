@@ -117,7 +117,6 @@ with app.app_context():
         Car(vin="WA1ECCFS9HR006677", cartype="SUV", make="Audi", model="Q3", year=2017, seats=5, ppd=83, mpg=22, mileage=52850, location="Charlotte", image="audi_q3_2017.jpg"),
 <<<<<<< HEAD
         Car(vin="4S4WMAPD9M3423270", cartype="SUV", make="Subaru", model="Ascent", year=2021, seats=5, ppd=75, mpg=24, mileage=72976, location="Wilmington", image="subaru_ascent.jpg"),
-        #Coupe
         Car(vin="2C3CDZBT3PH527800", cartype="Coupe", make="Dodge", model="Challenger R/T", year=2023, seats=5, ppd=95, mpg=18, mileage=2567, location="Charlotte", image="dodge_challenger_2023.jpg"),
         Car(vin="1G1YM2D7XH5102245", cartype="Coupe", make="Chevrolet", model="Corvette Z51 LT3", year=2017, seats=2, ppd=90, mpg=17, mileage=3782, location="Durham", image="chev_corvette_2017.jpg"),
         Car(vin="1FA6P9TH7M5156492", cartype="Coupe", make="Ford", model="Mustang", year=2021, seats=2, ppd=83, mpg=20, mileage=836075, location="Greensboro", image="ford_mustang_2021.jpg"),
