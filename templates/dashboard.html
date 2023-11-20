@@ -56,6 +56,9 @@
         .button {
             font-weight: 600;
         }
+        .user-name {
+            color: rgb(26, 255, 0); /* Replace 'blue' with your desired color */
+        }
 
         .button {
             background: #ff5722;
@@ -75,38 +78,38 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 20px; /* Space between search and map */
+            gap: 20px;
             padding: 20px;
-            margin-top: 20px; /* Adjust top margin as needed */
+            margin-top: 20px; 
         }
 
 
         .search-container {
-            flex: 1; /* Adjust the ratio between search and map as needed */
+            flex: 1;
             background: #fff;
             border-radius: 8px;
             padding: 5px;
             height: 400px;
         }
         .map-container {
-            flex: 2; /* Adjust the ratio between search and map as needed */
+            flex: 2; 
             background: #fff;
             border-radius: 8px;
-            padding: 5px; /* No padding so the map can fill the entire container */
-            height: 400px; /* Adjust height as needed */
+            padding: 5px; 
+            height: 400px; 
         }
 
 
         .search-rentals-form {
             display: flex;
-            flex-direction: column; /* Stack form fields vertically */
-            width: 100%; /* Full width of parent container */
+            flex-direction: column;
+            width: 100%; 
         }
 
         .search-rentals-form input,
         .search-rentals-form button {
-            width: calc(100% - 20px); /* Full width minus padding */
-            margin-bottom: 10px; /* Space between form fields */
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
         }
 
         .search-rentals-form button {
@@ -118,10 +121,10 @@
 
         .category-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Adjust grid layout for categories */
+            grid-template-columns: repeat(4, 1fr); 
             gap: 1rem;
             padding: 2rem;
-            margin-top: 20px; /* Spacing from top content */
+            margin-top: 20px;
         }
 
         .category {
@@ -235,7 +238,7 @@
     </div>
     
 <div class="top-right">
-    <span>Welcome, {{ user.first_name }}!</span>
+    <span class = "user-name">Welcome, <i>{{ user.first_name }}</i>!</span>
     <a href="{{ url_for('logout') }}" class="button">Logout</a>
 </div> 
     <footer class="footer">

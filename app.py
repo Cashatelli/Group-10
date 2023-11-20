@@ -223,7 +223,7 @@ def terms_and_conditions():
 
 @app.route('/faq')
 def faq():
-    return render_template('faq.html')
+    return render_template('faq.html', user=current_user)
 
 @app.route('/dashboard')
 @login_required
@@ -250,7 +250,7 @@ def browse_cars():
         ).all()
         car.available = len(active_bookings) == 0
 
-    return render_template('browse_cars.html', cars=cars, category_name=category_name)
+    return render_template('browse_cars.html', cars=cars, category_name=category_name,  user=current_user)
 
 @app.route('/book_car/<string:car_vin>', methods=['GET', 'POST'])
 @login_required
@@ -291,7 +291,7 @@ def book_car(car_vin):
         flash(f'Car booked successfully for {total_days} days. Total cost: ${total_cost}', 'success')
         return redirect(url_for('current_reservations'))
 
-    return render_template('book_car.html', car=car)
+    return render_template('book_car.html', car=car, user=current_user)
       
 @app.route('/current_reservations')
 @login_required
@@ -300,7 +300,7 @@ def current_reservations():
     reservations = Booking.query.filter_by(user_id=user_id).all()
     today = datetime.today().date()
 
-    return render_template('current_reservations.html', reservations=reservations, today=today)
+    return render_template('current_reservations.html', reservations=reservations, today=today, user=current_user)
 
 @app.route('/cancel_reservation/<int:reservation_id>')
 @login_required

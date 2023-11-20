@@ -26,6 +26,9 @@
             padding-bottom: 20px;
             border-bottom: 1px solid #eaeaea;
         }
+        .user-name {
+            color: rgb(26, 255, 0); /* Replace 'blue' with your desired color */
+        }
         .faq-body .question {
             background: #eaeaea;
             padding: 10px;
@@ -38,9 +41,59 @@
             background: #f8f8f8;
             display: none;
         }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus {
+            color: #4facfe;
+            text-decoration: underline;
+        }
+
+        .top-right {
+            position: absolute;
+            top: 30px;
+            right: 10px;
+        }
+
+        .top-right span,
+        .button {
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('browse_cars') }}">Browse Cars</a></li>
+                <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+                <li><a href="{{ url_for('current_reservations') }}">Current Reservations</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
         <div class="faq-header">
             <h1>Frequently Asked Questions</h1>
@@ -84,5 +137,10 @@
             });
         });
     </script>
+
+<div class="top-right">
+    <span class = "user-name">Welcome, <i>{{ user.first_name }}</i>!</span>
+    <a href="{{ url_for('logout') }}" class="button">Logout</a>
+</div> 
 </body>
 </html>
