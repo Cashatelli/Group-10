@@ -285,7 +285,7 @@ def browse_cars():
 
     return render_template('browse_cars.html', 
                             cars=cars, 
-                            category_name=cartype, 
+                            category=cartype, 
                             user=current_user,
                             cities=cities, 
                             makes=makes, 
