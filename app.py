@@ -73,7 +73,7 @@ with app.app_context():
         Car(vin="1C6RREFT6MN543610", cartype="Pickup", make="Ram", model="1500", year=2021, seats=4, ppd=98, mpg=19, mileage=98874, location="Durham", image="ram_1500_2021.jpg"),
         Car(vin="5FPYK3F72KB028445", cartype="Pickup", make="Honda", model="Ridgeline", year=2019, seats=4, ppd=115, mpg=22, mileage=68798, location="Raleigh", image="honda_ridgeline_2019.jpg"),
         Car(vin="3C6RR6LT3JG146144", cartype="Pickup", make="Ram", model="1500", year=2018, seats=4, ppd=88, mpg=19, mileage=124794, location="Charlotte", image="ram_1500_2018.jpg"),
-        Car(vin="1C6SRFBTXKN733890", cartype="Pickup", make="Ram", model="1500", year=2019, seats=4, ppd=95, mpg=18, mileage=72380, location="Wlimington", image="ram_1500_2019.jpg"),   
+        Car(vin="1C6SRFBTXKN733890", cartype="Pickup", make="Ram", model="1500", year=2019, seats=4, ppd=95, mpg=18, mileage=72380, location="Wilmington", image="ram_1500_2019.jpg"),   
         Car(vin="5NTJEDAF7NH011122", cartype="Pickup", make="Hyundai", model="Santa_Cruz", year=2022, seats=4, ppd=143, mpg=24, mileage=13159, location="Asheville", image="hyundai_santacruz_2022.jpg"),
         Car(vin="1FTEW1EGXJFE55694", cartype="Pickup", make="Ford", model="F-150", year=2018, seats=4, ppd=118, mpg=19, mileage=86410, location="Durham", image="ford_f-150_2018.jpg"),
         Car(vin="1GTN1LEC4GZ146768", cartype="Pickup", make="GMC", model="Sierra_1500", year=2016, seats=2, ppd=79, mpg=20, mileage=118713, location="Greenville", image="gmc_serria_2016.jpg"),
