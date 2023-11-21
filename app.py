@@ -160,6 +160,38 @@ with app.app_context():
         Car(vin="4SN02J7782K03L123", cartype="Wagon", make="Subaru", model="Outback", year="2022", seats=5, ppd=72, mpg=28, mileage=14265, location="Raleigh", image="sub_outback_2022.jpg"),
         Car(vin="WMLWNK5CLH2E32112", cartype="Wagon", make="Mini Cooper", model="Clubman", year=2017, seats=5, ppd=85, mpg=53, mileage=63367, location="Asheville", image="mini_coop_clubman.jpg"),
         Car(vin="4S2NCT8L0021NM325", cartype="Wagon", make="Subaru", model="Outback Onyx Edition XT", year=2023, seats=5, ppd=73, mpg=26, mileage=1232, location="Durham", image="sub_onyx_2023.jpg"),
+        #Hatchback Cars
+        Car(vin="KNAFK5A88H5719594", cartype="Hatchback", make="Kia", model="Forte5 LX", year=2017, seats=5, ppd=95, mpg=25, mileage=12799, location="Raleigh", image=""),
+        Car(vin="WAUCBCF57MA006273", cartype="Hatchback", make="Audi", model="A5 Premium Plus 40", year=2021, seats=5, ppd=87, mpg=25, mileage=67092, location="Durham", image=""),
+        Car(vin="SHHFK7H58HU233486", cartype="Hatchback", make="Honda", model="Civic EX", year=2017, seats=5, ppd=88, mpg=31, mileage=89592, location="Raleigh", image=""),
+        Car(vin="ML32A3HJ1KH008894", cartype="Hatchback", make="Mitsubishi", model="Mirage ES", year=2019, seats=5, ppd=83, mpg=36, mileage=56050, location="Charlotte", image=""),
+        Car(vin="JTNC4MBE3M3116049", cartype="Hatchback", make="Toyota", model="Corolla XSE", year=2021, seats=4, ppd=74, mpg=30, mileage=33401, location="Wilmington", image=""),
+        Car(vin="19XFL1H79NE012896", cartype="Hatchback", make="Honda", model="Civic EXL", year=2022, seats=5, ppd=96, mpg=30, mileage=21799, location="Asheville", image=""),
+        Car(vin="WMW73DH03P2T40658", cartype="Hatchback", make="Mini Cooper", model="John Cooper Works", year=2023, seats=4, ppd=83, mpg=25, mileage=7008, location="Asheville", image=""),
+        Car(vin="JM1BPAJL0M1337948", cartype="Hatchback", make="Mazda", model="Mazade3 S", year=2021, seats=5, ppd=78, mpg=26, mileage=28200, location="Wilmington", image=""),
+        Car(vin="3VWYT7AU0FM032499", cartype="Hatchback", make="Volkswagen", model="GTI S", year=2015, seats=5, ppd=90, mpg=25, mileage=119845, location="Boone", image=""),
+        Car(vin="JM1BPBJY1P1604021", cartype="Hatchback", make="Mazda", model="Mazda3 Turbo", year=2023, seats=5, ppd=85, mpg=23, mileage=9405, location="Doone", image=""),
+        Car(vin="3HGGK5H88FM728818", cartype="Hatchback", make="Honda", model="Fit EX", year=2015, seats=5, ppd=101, mpg=32, mileage=93968, location="Charlotte", image=""),
+        Car(vin="19XFL2H81NE000532", cartype="Hatchback", make="Honda", model="Civic Sport", year=2022, seats=5, ppd=91, mpg=29, mileage=17625, location="Durham", image=""),
+        Car(vin="SHHFK7H90JU233202", cartype="Hatchback", make="Honda", model="Civic Sport Touring", year=2018, seats=5, ppd=72, mpg=31, mileage=95548, location="Greenville", image=""),
+        Car(vin="3FADP4TJ1GM170938", cartype="Hatchback", make="Ford", model="Fiesta S", year=2016, seats=5, ppd=88, mpg=27, mileage=98127, location="Greenville", image=""),
+        Car(vin="WBY1Z4C50EV274347", cartype="Hatchback", make="BMW", model="i3 Range Extender", year=2014, seats=4, ppd=97, mpg=137, mileage=77471, location="Greenville", image=""),
+        #Vans
+        Car(vin="1GCWGBFP8P1103967", cartype="Van", make="Chevrolet", model="Express 2500", year=2023, seats=12, ppd=85, mpg=14, mileage=3046, location="Charlotte", image=""),
+        Car(vin=" 1FTYR1YG9GKA12517", cartype="Van", make="Ford", model="Transit", year=2016, seats=2, ppd=90, mpg=14, mileage=139209, location="Charlotte", image=""),
+        Car(vin="1FTNR1CM4FKA60022", cartype="Van", make="Ford", model="Transit Base", year=2015, seats=2, ppd=96, mpg=24, mileage=181591, location="Wilmington", image=""),
+        Car(vin="3C6LRVBG8ME525516", cartype="Van", make="Ram", model="ProMaster 1500", year=2021, seats=2, ppd=105, mpg=18, mileage=75675, location="Wilmington", image=""),
+        Car(vin="WD4PF0CD6KP026095", cartype="Van", make="Mercedes-Benz", model="Sprinter 2500", year=2019, seats=12, ppd=94, mpg=18, mileage=9730, location="Durham", image=""),
+        Car(vin="W1XV0FEYXM3918544", cartype="Van", make="Mercedes-Benz", model="Metris", year=2021, seats=7, ppd=82, mpg=18, mileage=20308, location="Durham", image=""),
+        Car(vin="1FTBW9CGXLKA67086", cartype="Van", make="Ford", model="Transit", year=2020, seats=12, ppd=72, mpg=24, mileage=90265, location="Boone", image=""),
+        Car(vin="1FTBW9CGXLKA67086", cartype="Van", make="Ram", model="ProMaster 1500", year=2018, seats=2, ppd=90, mpg=15, mileage=180995, location="Boone", image=""),
+        Car(vin="5BZAF0AA0LN852219", cartype="Van", make="Nissan", model="NV 3500HD SL", year=2020, seats=12, ppd=110, mpg=11, mileage=92636, location="Asheville", image=""),
+        Car(vin="1FBZX2YG4GKA22084", cartype="Van", make="Ford", model="Transit XLT", year=2016, seats=12, ppd=83, mpg=22, mileage=69320, location="Asheville", image=""),
+        Car(vin="1FTYR2CMXKKA14384", cartype="Van", make="Ford", model="Transit Base", year=2019, seats=15, ppd=99, mpg=15, mileage=110137, location="Raleigh", image=""),
+        Car(vin="WD3PE7CC0C5718681", cartype="Van", make="Mercedes-Benz", model="Sprinter 2500", year=2012, seats=12, ppd=70, mpg=17, mileage=117363, location="Raleigh", image=""),
+        Car(vin="1FTBW1YK7PKA57104", cartype="Van", make="Ford", model="E-Transit", year=2023, seats=2, ppd=95, mpg=11, mileage=321, location="Greenville", image=""),
+        Car(vin="3C6ERVDG5ME500501", cartype="Van", make="Ram", model="ProMaster 2500", year=2021, seats=2, ppd=88, mpg=15, mileage=121738, location="Greenville", image=""),
+        Car(vin="1N6AF0LY1DN106659", cartype="Van", make="Nissan", model="NV 2500HD S", year=2013, seats=2, ppd=91, mpg=12, mileage=171470, location="Charlotte", image="")
     ]
 
     for car in cars:
