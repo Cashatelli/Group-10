@@ -316,13 +316,17 @@ def browse_cars():
 
         car.available = len(active_bookings) == 0
 
-    return render_template('browse_cars.html', 
-                            cars=cars, 
-                            category=cartype, 
+    if len(cars) == 0:
+        return render_template('no_cars_found.html')
+    else:
+        return render_template('browse_cars.html',
+                            cars=cars,
+                            category=cartype,
                             user=current_user,
-                            cities=cities, 
-                            makes=makes, 
+                            cities=cities,
+                            makes=makes,
                             categories=categories)
+
 
 @app.route('/book_car/<string:car_vin>', methods=['GET', 'POST'])
 @login_required
