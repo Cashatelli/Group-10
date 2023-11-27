@@ -313,6 +313,7 @@ def browse_cars():
             Booking.start_date <= today,
             Booking.end_date >= today
         ).all()
+
         car.available = len(active_bookings) == 0
 
     return render_template('browse_cars.html', 
@@ -338,6 +339,12 @@ def book_car(car_vin):
         if start_date >= end_date:
             flash('End date must be after start date.', 'error')
             return render_template('book_car.html', car=car)
+        
+        # Check if the dates are valid
+        # if start_date >= end_date or start_date < date.today():
+            #flash('Invalid date range.', 'error')
+            #return render_template('book_car.html', car=car, user=current_user)
+
 
         total_days = (end_date - start_date).days
         total_cost = total_days * car.ppd
