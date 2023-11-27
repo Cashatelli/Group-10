@@ -169,7 +169,8 @@ body {
                     <input type="password" name="password" placeholder="Password" class="login-input password-field">
                     <i class="fa fa-lock"></i>
                 </div>
-                <button type="submit" class="login-btn">Login</button>
+                <button type="submit" class="login-btn" onclick="validateAndSubmit(event)">Create Account</button>
+
             </form>
         </div>
         
@@ -201,6 +202,7 @@ body {
                 </div>
                 <div style="position:relative;">
                     <input type="date" name="DateOfBirth" class="login-input">
+                    <div id="error-message" style="color: red; margin-top: 5px;"></div>
                 </div>
                 <button type="submit" class="login-btn" onclick="validateAndSubmit()" >Create Account</button>
             </form>
@@ -236,12 +238,18 @@ body {
                 return Math.abs(ageDate.getUTCFullYear() - 1970);
                 }
 
-            function validateAndSubmit() {
-                const form = document.getElementById('signUpForm');
+            function validateAndSubmit(event) {
+                event.preventDefault();
+
+                const form = document.querySelector('#signUpContent form');
                 const dob = form.elements['DateOfBirth'].value;
                 const password = form.elements['password'].value;
                 const confirmPassword = form.elements['confirm_password'].value;
+                const errorMessageElement = document.getElementById('error-message');
 
+                // Clear any previous error messages
+                errorMessageElement.textContent = '';
+                
                 if (password !== confirmPassword) {
                     alert("Passwords do not match.");
                     return;
