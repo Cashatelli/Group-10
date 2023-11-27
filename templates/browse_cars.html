@@ -189,6 +189,7 @@
             <p>Price per day: ${{ car.ppd }}</p>
             <p>Mileage: {{ car.mileage }} miles</p>
             <p>Location: {{ car.location }}</p>
+            <a href="https://www.carfax.com/VehicleHistory/p/Report.cfx?partner=CUL_1&vin={{car.vin}}">Show me the CARFAX report</a>
 
             {% if car.available %}
                 <a href="{{ url_for('book_car', car_vin=car.vin) }}" class="reserve-button">Reserve</a>
