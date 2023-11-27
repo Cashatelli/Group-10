@@ -92,7 +92,7 @@
         }
 
         .hero {
-            background: url("{{ url_for('static', filename='images/background_browse.jpg') }}") no-repeat center center;
+            background: url("{{ url_for('static', filename='images/backgroud_disp.jpg') }}") no-repeat center center;
             background-size: cover;
             padding: 4rem 0;
             text-align: center;
@@ -177,7 +177,7 @@
     </header>
     <div class="hero">
         <h1>Welcome to Rent-a-car</h1>
-        <p><b>Below are all {{ category_name }}s available at this time</b> </p>
+        <p><b>Below are all cars available at this time</b> </p>
     </div>
     <div class="container">
         {% for car in cars %}
