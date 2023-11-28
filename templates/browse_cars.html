@@ -90,6 +90,9 @@
         .car-box h3, .car-box p {
             color: #d0d0d0; 
         }
+        .car-box a {
+            color: #ffffff; /* White text color for the CARFAX link */
+        }
 
         .hero {
             background: url("{{ url_for('static', filename='images/backgroud_disp.jpg') }}") no-repeat center center;
@@ -192,10 +195,16 @@
             <a href="https://www.carfax.com/VehicleHistory/p/Report.cfx?partner=CUL_1&vin={{car.vin}}">Show me the CARFAX report</a>
 
             {% if car.available %}
-                <a href="{{ url_for('book_car', car_vin=car.vin) }}" class="reserve-button">Reserve</a>
+            <a href="{{ url_for('book_car', car_vin=car.vin) }}" class="reserve-button">Reserve</a>
             {% else %}
-                <p>This car is currently reserved until {end.date}.</p>
+                {% if car.end_date %}
+                    <p>This car is currently reserved until {{ car.end_date }}.</p>
+                {% else %}
+                    <p>This car is currently reserved.</p>
+                {% endif %}
+                <a href="{{ url_for('book_car', car_vin=car.vin) }}" class="reserve-button">Reserve for later date</a>
             {% endif %}
+
         </div>
         {% endfor %}
     </div>
