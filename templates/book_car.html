@@ -275,8 +275,11 @@
     };
     </script>
 <div class="top-right">
-    <span class = "user-name">Welcome, <i>{{ user.first_name }}</i>!</span>
-    <a href="{{ url_for('logout') }}" class="button">Logout</a>
+    {% if user %}
+        <span class="user-name">Welcome, <i>{{ user.first_name }}</i>!</span>
+        <a href="{{ url_for('logout') }}" class="button">Logout</a>
+    {% endif %}
 </div>
+
 </body>
 </html>

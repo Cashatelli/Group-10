@@ -8,6 +8,12 @@ from sqlalchemy.orm import sessionmaker, session as db_session
 from flask import session
 from datetime import datetime, date
 from flask_mail import Mail, Message
+from werkzeug.security import check_password_hash
+from sqlalchemy import and_, or_
+from flask_login import current_user
+from werkzeug.security import generate_password_hash
+from flask import render_template
+
 import math
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Group10'
@@ -216,12 +222,18 @@ def create_account():
     email = request.form.get('email')
     phone_number = request.form.get('phone_number')
     password = request.form.get('password')
+    confirm_password = request.form.get('confirm_password')
+
+    # Check if passwords match
+    if password != confirm_password:
+        flash('Passwords do not match. Please try again.', 'error')
+        return render_template('login.html', create_account_error=True, **request.form)
 
     # Check if user with this email already exists
     existing_user = User.query.filter_by(email=email).first()
     if existing_user:
         flash('Email already in use.', 'error')
-        return redirect(url_for('index'))
+        return render_template('login.html', create_account_error=True, **request.form)
 
     hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
     new_user = User(first_name=first_name, last_name=last_name, email=email, phone_number=phone_number, password=hashed_password)
@@ -316,10 +328,8 @@ def browse_cars():
 
         car.available = len(active_bookings) == 0
 
-    if len(cars) == 0:
-        return render_template('no_cars_found.html')
-    else:
-        return render_template('browse_cars.html',
+   
+    return render_template('browse_cars.html',
                             cars=cars,
                             category=cartype,
                             user=current_user,
@@ -349,6 +359,20 @@ def book_car(car_vin):
             #flash('Invalid date range.', 'error')
             #return render_template('book_car.html', car=car, user=current_user)
 
+        overlapping_booking = Booking.query.filter(
+            and_(
+                Booking.car_id == car_vin,
+                or_(
+                    and_(Booking.start_date <= start_date, Booking.end_date >= start_date),
+                    and_(Booking.start_date <= end_date, Booking.end_date >= end_date),
+                    and_(Booking.start_date >= start_date, Booking.end_date <= end_date),
+                )
+            )
+        ).first()
+
+        if overlapping_booking:
+            flash('Selected dates overlap with a existing booking. Please choose different dates.', 'error')
+            return render_template('book_car.html', car=car)
 
         total_days = (end_date - start_date).days
         total_cost = total_days * car.ppd
@@ -375,12 +399,12 @@ def book_car(car_vin):
 
     return render_template('book_car.html', car=car, user=current_user)
 
-@app.route('/api/cars')
-@login_required
-def api_cars():
-    cars = Car.query.all()
-    car_data = [{"vin": car.vin, "make": car.make, "model": car.model, "location": car.location} for car in cars]
-    return jsonify(car_data)    
+#@app.route('/api/cars')
+#@login_required
+#def api_cars():
+    #cars = Car.query.all()
+    #car_data = [{"vin": car.vin, "make": car.make, "model": car.model, "location": car.location} for car in cars]
+    #return jsonify(car_data)    
 
 @app.route('/current_reservations')
 @login_required

@@ -157,7 +157,7 @@ body {
         <div class="tab-container">
             <div class="tab" id="signInTab">SIGN IN</div>
             <div class="tab" id="signUpTab">MAKE ACCOUNT</div>
-        </div>
+    </div>
 
         <div class="tab-content active" id="signInContent">
             <form action="{{ url_for('login') }}" method="post">
@@ -200,6 +200,12 @@ body {
                     <input type="password" name="confirm_password" placeholder="Confirm Password" class="login-input">
                     <i class="fa fa-lock"></i>
                 </div>
+                
+                <!-- Display error message if passwords don't match -->
+                {% if create_account_error %}
+                    <div style="color: red; margin-top: 5px;">Passwords don't match. Please try again.</div>
+                {% endif %}
+
                 <div style="position:relative;">
                     <input type="date" name="DateOfBirth" class="login-input">
                     <div id="error-message" style="color: red; margin-top: 5px;"></div>
