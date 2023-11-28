@@ -328,6 +328,11 @@ def browse_cars():
 
         car.available = len(active_bookings) == 0
 
+        # Calculate end date for the first active booking (if any)
+        car.end_date = None  # Initialize end_date to None if no active bookings
+        if active_bookings:
+            car.end_date = active_bookings[0].end_date
+
    
     return render_template('browse_cars.html',
                             cars=cars,
