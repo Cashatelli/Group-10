@@ -334,7 +334,10 @@ def browse_cars():
             car.end_date = active_bookings[0].end_date
 
    
-    return render_template('browse_cars.html',
+    if len(cars) == 0:
+        return render_template('no_cars_found.html')
+    else:
+        return render_template('browse_cars.html',
                             cars=cars,
                             category=cartype,
                             user=current_user,
