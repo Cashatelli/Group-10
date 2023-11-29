@@ -224,7 +224,7 @@ def create_account():
     password = request.form.get('password')
     confirm_password = request.form.get('confirm_password')
 
-    # Check if passwords match
+    #Check if passwords match
     if password != confirm_password:
         flash('Passwords do not match. Please try again.', 'error')
         return render_template('login.html', create_account_error=True, **request.form)
